@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Product Reviews</h1>
+<h2><%= @product.name %></h2>
+
+<%= link_to 'Products List', products_path %> 
+
+<%= form_tag product_reviews_path, method: :get do %>
+  <%= hidden_field_tag 'product_id',  @product.id%>
+
+  <p><%= text_field_tag(:search_message, @search_message, placeholder: 'Enter search term...') %></p>
+
+  <p><%= submit_tag 'Search' %></p>
+<%end%>
+
+<%= button_to "Update", update_reviews_product_reviews_product_reviews_path(product_id: @product.id), method: :put %>
+
+( <%= @product_reviews.size %> )
+
+<table>
+  <thead>
+    <tr>
+      <th>Reviews</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @product_reviews.each do |product_review| %>
+      <tr>
+        <td><%= product_review.message %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

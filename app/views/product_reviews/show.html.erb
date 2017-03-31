@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @product_review.product_id %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @product_review.message %>
+</p>
+
+<p>
+  <strong>Hash message:</strong>
+  <%= @product_review.hash_message %>
+</p>
+
+<%= link_to 'Edit', edit_product_review_path(@product_review) %> |
+<%= link_to 'Back', product_reviews_path %>
