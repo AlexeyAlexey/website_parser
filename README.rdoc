@@ -29,16 +29,30 @@ Please feel free to use a different markup language if you do not plan to run
 
 
 
-$ rvm use 2.2.4@rails_website_parser --create
+website_parser$ rvm use 2.2.4@rails_website_parser --create
 
-$ gem install rails -v 4.2.8
+website_parser$ gem install rails -v 4.2.8
 
-$ rails s -b 192.168.55.60 -p 8585  -e development
+website_parser$ rails s -b 192.168.55.60 -p 8585  -e development
 
-$ bundle exec sidekiq
+website_parser$ bundle exec sidekiq
 
 
 
-sidekiq http://192.168.55.60:8585/sidekiq
+sidekiq page http://192.168.55.60:8585/sidekiq
 
 sidekiq config  config/sidekiq.yml
+
+
+	I have used Sidekiq for moving long-execution tasks to a background process 
+	The Sidekiq uses redis for communicating with an application 
+
+	I have used hashing for checking if information is unique
+
+	User sends the URL to the application. When the application gets the URL,
+	 it generates a hash of the URL and then writes them into DB. If the hash of the URL does not exist in the DB the application sends the record ID  to the Sidekiq for parsing a web page
+
+	I have used the Nokogiri library for parsing a web page
+
+	I have figured out which URL I can use to get reviews about the product (https://www.walmart.com/ip/Ematic-9-Dual-Screen-Portable-DVD-Player-with-Dual-DVD-Players-ED929D/28806789)
+	https://www.walmart.com/reviews/product/28806789?limit=20&page=2&sort=relevancy

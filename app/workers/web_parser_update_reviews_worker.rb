@@ -7,9 +7,9 @@ class WebParserUpdateReviewsWorker
 
   # The current retry count is yielded. The return value of the block must be 
   # an integer. It is used as the delay, in seconds. 
-  sidekiq_retry_in do |count|
-    10 * (count + 3) # (i.e. 10, 20, 30, 40, 50)
-  end
+  #sidekiq_retry_in do |count|
+    #10 * (count + 3) # (i.e. 10, 20, 30, 40, 50)
+  #end
 
   def perform(*args)
     # Do something

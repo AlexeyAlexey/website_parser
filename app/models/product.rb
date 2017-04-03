@@ -3,7 +3,7 @@ class Product < ActiveRecord::Base
   has_many :product_reviews, dependent: :destroy
 
   validates :url, presence: true
-  validates :url, :format => URI::regexp(%w(http https))
+  validates :url, format: { with: /https\:\/\/www\.walmart\.com\/ip\/\S*\/\d*/, message: "wrong URL" }
   validates_uniqueness_of :hash_url, message: 'URL has already been taken'
 
 

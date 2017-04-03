@@ -3,7 +3,7 @@ Sidekiq::Web.set :session_secret, Rails.application.secrets[:secret_key_base]
 
 Rails.application.routes.draw do
   
-  resources :product_reviews do 
+  resources :product_reviews, only: [:index] do 
     collection do 
       put '/product_reviews/update_reviews/:product_id', to: "product_reviews#update_reviews", as: :update_reviews_product_reviews
     end
